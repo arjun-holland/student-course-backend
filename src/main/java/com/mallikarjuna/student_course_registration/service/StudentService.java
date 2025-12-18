@@ -32,4 +32,12 @@ public class StudentService {
     public List<Student> getAllStudents() {
         return studentRepository.findAll();
     }
+
+    // ✅ DELETE STUDENT
+    public void deleteStudent(Long id) {
+        if (!studentRepository.existsById(id)) {
+            throw new RuntimeException("STUDENT_NOT_FOUND");
+        }
+        studentRepository.deleteById(id);
+    }
 }
